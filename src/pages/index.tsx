@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 import styles from "../pages/index.module.css";
-import { numberToRoman } from "../utils";
+import { numberToRoman, onKeyDownValidateNumberInRange } from "../utils";
 import { ChangeEvent, useState } from "react";
 import { romanValues } from "../constants";
 
@@ -28,6 +28,9 @@ export default function RomanNumeralCalculator() {
           placeholder="No. from 1 to 1000"
           type="number"
           onChange={onNumberChange}
+          onKeyDown={(e) =>
+            onKeyDownValidateNumberInRange(e, { maxValue: 1000, minValue: 1 })
+          }
         ></input>
         <input placeholder="Roman Numeral" value={roman} readOnly></input>
       </main>
