@@ -10,7 +10,7 @@ export default function RomanNumeralCalculator() {
 
   const onNumberChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const currentNumber = Number(e.currentTarget.value);
-    currentNumber
+    currentNumber && currentNumber > 0 && currentNumber <= 1000
       ? setRoman(numberToRoman(romanValues, currentNumber))
       : setRoman("");
   };
