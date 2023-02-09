@@ -1,8 +1,20 @@
 import Head from "next/head";
 
-import styles from "./index.module.css";
+import styles from "../pages/index.module.css";
+import { numberToRoman, onKeyDownValidateNumberInRange } from "../utils";
+import { ChangeEvent, useState } from "react";
+import { romanValues } from "../constants";
 
-export default function Home() {
+export default function RomanNumeralCalculator() {
+  const [roman, setRoman] = useState("");
+
+  const onNumberChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    const currentNumber = Number(e.currentTarget.value);
+    currentNumber && currentNumber > 0 && currentNumber <= 1000
+      ? setRoman(numberToRoman(romanValues, currentNumber))
+      : setRoman("");
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,6 +24,15 @@ export default function Home() {
 
       <main>
         <p>Roman Numeral Calculator</p>
+        <input
+          placeholder="No. from 1 to 1000"
+          type="number"
+          onChange={onNumberChange}
+          onKeyDown={(e) =>
+            onKeyDownValidateNumberInRange(e, { maxValue: 1000, minValue: 1 })
+          }
+        ></input>
+        <input placeholder="Roman Numeral" value={roman} readOnly></input>
       </main>
     </div>
   );
