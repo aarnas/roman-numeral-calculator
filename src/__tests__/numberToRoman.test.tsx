@@ -38,7 +38,7 @@ describe("Integer to Roman Numeral Calculator", () => {
   });
 
   test("Converts 9 to IX", () => {
-    expect(numberToRoman(romanValues, 9)).toBe("CM");
+    expect(numberToRoman(romanValues, 9)).toBe("IX");
   });
 
   test("Converts 900 to CM", () => {
