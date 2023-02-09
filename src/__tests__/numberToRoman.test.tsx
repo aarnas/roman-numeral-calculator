@@ -1,8 +1,5 @@
 import { romanValues } from "../constants";
-
-const numberToRoman = (values: typeof romanValues, value: number) => {
-  return value;
-};
+import { numberToRoman } from "../utils";
 
 describe("Integer to Roman Numeral Calculator", () => {
   test("Converts 1 to I", () => {
