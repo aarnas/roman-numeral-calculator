@@ -32,4 +32,36 @@ describe("Integer to Roman Numeral Calculator", () => {
   test("Converts 1000 to M", () => {
     expect(numberToRoman(romanValues, 1000)).toBe("M");
   });
+
+  test("Converts 4 to IV", () => {
+    expect(numberToRoman(romanValues, 4)).toBe("IV");
+  });
+
+  test("Converts 9 to IX", () => {
+    expect(numberToRoman(romanValues, 9)).toBe("CM");
+  });
+
+  test("Converts 900 to CM", () => {
+    expect(numberToRoman(romanValues, 900)).toBe("CM");
+  });
+
+  test("Converts 999 to CMXCIX", () => {
+    expect(numberToRoman(romanValues, 999)).toBe("CMXCIX");
+  });
+
+  test("Converts 888 to DCCCLXXXVIII", () => {
+    expect(numberToRoman(romanValues, 888)).toBe("DCCCLXXXVIII");
+  });
+
+  test("Throws error for negative input", () => {
+    expect(() => {
+      numberToRoman(romanValues, -1);
+    }).toThrowError();
+  });
+
+  test("Throws error for input greater than 1000", () => {
+    expect(() => {
+      numberToRoman(romanValues, 1001);
+    }).toThrowError();
+  });
 });
